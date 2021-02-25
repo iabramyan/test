@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Test</title>
+</head>
+<body>
+    
+    <!--Header-->
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">
+                <img src="images/logo.svg" alt="WebDev Logo">
+            </a>
+            <nav class="navbar-nav">
+                <ul>
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="about.html">About</a>
+                    </li>
+                    <li>
+                        <a href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!--Hero section-->
+        <section class="hero hero-sm" style="background-image: url(images/contact/hero.jpeg);">
+            <div class="container">
+                <h1 class="mb-0">Contact Us</h1>
+            </div>
+        </section>
+
+        <!--Form and text-->
+        <section class="section-padding">
+            <div class="container">
+                <div class="contact-form">
+                    <div class="contact-form__form">
+                        <form action="#" class="form-layout">
+                            <div class="form-col-50">
+                                <label for="contact-name">Your Name</label>
+                                <input type="text" class="form-control" name="contact-name" id="contact-name">
+                            </div>
+                            <div class="form-col-50">
+                                <label for="contact-email">Your Email</label>
+                                <input type="email" class="form-control" name="contact-email" id="contact-email">
+                            </div>
+                            <div class="form-col">
+                                <label for="contact-message">Your Message</label>
+                                <textarea class="form-control"
+                                          name="contact-message"
+                                          id="contact-message"
+                                          rows="4"></textarea>
+                            </div>
+                            <div class="form-col">
+                                <button class="btn btn-primary" type="submit">
+                                    Submit
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="contact-form__info">
+                        <p class="lead">Email: <a href="mailto:webtest@mail.ru">webtest@mail.ru</a></p>
+                        <p class="lead">Phone: <a href="tel:+0123456789">+0 123 456 789</a></p>
+                        <br>
+                        <p class="lead">We are ready to answer you anytime 24/7. Hope to see your feedback, suggestions and orders
+                        for our works. Every call or email will be answerd on time.</p>
+                        <p class="lead">We are open from 9 am to 5 pm 5 week days.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!--Footer-->
+    <footer>
+        <div class="container">
+            <div class="footer-row">
+                <small class="footer-copyright">© Test Project - All Rights Reserved</small>
+                <ul class="footer-social">
+                    <li>
+                        <a href="#">
+                            <img src="images/icons/facebook.svg" alt="WebDev on Facebook">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="images/icons/instagram.svg" alt="WebDev on Instagram">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="images/icons/youtube.svg" alt="WebDev on YouTube">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="images/icons/twitter.svg" alt="WebDev on Twitter">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

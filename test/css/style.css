@@ -1,0 +1,489 @@
+*, h1, h2, h3, h4, h5, h6, p, a, ul {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+/* до этого мы убрали все встроенные стили */
+html, body {
+    overflow-x: hidden; /* это нам нужно было для того, чтобы элементы не выходили за края */
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #666;
+    /*для того, чтобы футер приклеился внизу страницы*/
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main { /* тоже для того, чтобы футер приклеился внизу страницы*/
+    flex: 1; /*теперь секция main у нас занимает всё возможное место, поэтому, footer у нас смещается вниз*/
+}
+
+a { /*тут стили для всех ссылок*/
+    color: #4a90e2;
+    text-decoration: none;
+    transition: all .3s ease;
+}
+
+a:not(.btn):hover { /*тут стили для всех ссылок, которые не используют класс btn (в данном случае это будет работать при наведении)*/
+    color: #4872a2;
+}
+
+p + a:not(.btn) { /*тут стили для всех ссылок, которые идут после параграфов с классом btn*/
+    font-size: 13px;
+    font-weight: 700;
+}
+
+h1, h2, h3, h4, h5, h6 { /*тут стили для всех заголовков*/
+    line-height: 1.25;
+    font-weight: 300;
+    color: #252525;
+}
+/*дальше, устанавливаем размеры шрифта, так как при изменении размеров экрана шрифт также меняется. Меньше экран - меньше шрифт*/
+/*сначала для мобильной версии*/
+h1 {
+    font-size: 34px;
+}
+h2 {
+    font-size: 28px;
+}
+h3 {
+    font-size: 22px;
+}
+h4 {
+    font-size: 18px;
+}
+/*теперь медиа запрос для больших экранов*/
+@media (min-width: 992px) { /*начиная с ширины 992 пикселей у нас будут другие значения заголовков*/
+    h1 {
+        font-size: 44px;
+    }
+    h2 {
+        font-size: 33px;
+    }
+    h3 {
+        font-size: 26px;
+    }
+    h4 {
+        font-size: 20px;
+    }
+}
+
+img {
+    max-width: 100%; /*Чтобы картинка (у нас в сплит секции и не талько) не распользалась непонятно на какую ширину*/
+}
+
+button { /*добавил от себя, чтобы не было рамки у кнопки (Гугл Хром зачем-то поставил)*/
+    border: none;
+}
+
+label {
+    display: inline-block;
+    font-size: 12px;
+    color: #666666;
+    margin-bottom: 3px;
+}
+
+textarea {
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 200px;
+    min-height: 50px;
+}
+
+/* Global */ /*теперь зададим стили для глобальных (универсальных) классов*/
+
+.container {
+    max-width: 1280px;
+    width: 100%; /*ширина 100%, чтобы он растягтвался*/
+    margin: 0 auto; /*здесь 0 - это верх и низ по нулям, а слева и справа авто. Так у нас получится контейнер будет по центру*/
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.lead {
+    font-size: 16px;
+    color: #808080;
+    font-weight: 300;
+}
+
+@media (min-width: 992px) { /*медиа запрос, чтобы размер шрифта параграфов с классом lead при экранах начиная от 992px отображались как 19рх*/
+    .lead {
+        font-size: 19px;
+    }
+}
+
+.section-padding {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.section-grey {
+    border-top: 1px solid #ebebeb;
+    background-color: #fafafa;
+}
+
+.image-shadow {
+    box-shadow: 0 23px 40px rgba(0, 0, 0, .2);
+}
+
+.image-rounded {
+    border-radius: 6px;
+}
+
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+
+/*теперь работаем над секциями*/ 
+
+/*Buttons*/ /*отдельно работаем с кнопками*/
+
+.btn { /*скелет кнопки*/
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 42px;
+    border-radius: 6px;
+    padding: 5px 35px;
+    transition: 0.1s linear;
+}
+
+.btn-primary { /*добавим цвет и другие стили для кнопки с классом btn-primary*/
+    background-color: #4a90e2;
+    color: #ffffff;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    font-size: 13px;
+}
+
+.btn-primary:hover {
+    background-color: #609de6;
+    transform: translate3d(0, -2px, 0);
+}
+
+/*Nav bar*/
+.navbar {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 66px;
+    z-index: 2;
+}
+
+.navbar > .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.navbar-brand img{
+    max-width: 160px;
+}
+
+.navbar-nav {
+    margin-left: auto; /*наш список навигации уйдёт вправо*/
+}
+
+.navbar-nav ul {
+    display: flex;
+    list-style: none;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.navbar-nav li {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.navbar-nav li a {
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 14px;
+    opacity: .6;
+    letter-spacing: .5px;
+    transition: opacity .3s ease;
+}
+
+.navbar-nav li a:hover {
+    color: #ffffff;
+    opacity: 1;
+}
+
+/*стили навигации для мобильных девайсов*/
+@media (max-width: 500px) { /*До 500рх у нас весь контент будет в навбаре, т.е. по центру*/
+    .navbar-brand {
+        max-width: 100%;
+        width: 100%; /*Чтобы он занял отдельный рядок*/
+        text-align: center;
+        padding-top: 25px;
+        margin-bottom: 10px;
+    }
+    .navbar-brand img {
+        max-width: 130px;
+    }
+    .navbar-nav {
+        margin: 0 auto;
+    }
+}
+
+/*Hero section*/
+.hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 70vh;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+}
+
+.hero.hero-sm {
+    min-height: 40vh;
+}
+
+/*добавим оверлэй, чтобы текст читался, повесив его на псевдокласс*/
+.hero::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #252525;
+    opacity: .5;
+}
+
+.hero .container {
+    position: relative;
+    max-width: 800px;
+}
+
+.hero h1 {
+    margin-bottom: 24px;
+    color: #ffffff;
+}
+
+.hero p {
+    margin-bottom: 35px;
+    font-weight: 300;
+    opacity: .8;
+    color: #ffffff;
+}
+
+
+/*Services section*/
+.services {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    text-align: center;
+    margin-left: -15px;
+    margin-right: -15px; /*потому что колонки у нас будут иметь padding по 15рх слева и справа*/
+}
+
+.service-col { /*Это для мобильных устройств, для экранов планшетов и больше потом напишем через медиа запрос*/
+    max-width: 100%;
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 30px;
+}
+
+.service {
+    padding: 25px;
+    border: 1px solid #ececec;
+    border-radius: 6px;
+}
+
+.service img {
+    opacity: .6;
+    max-width: 70px;
+    margin-bottom: 24px;
+}
+
+.service h4 {
+    font-weight: 400;
+    margin-bottom: 12px;
+}
+
+.service p {
+    max-width: 280px;
+    margin: 0 auto 30px auto; /*центровка по центру, а margin-bottom у нас 30рх*/
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+@media (min-width: 768px) { /*от экранов планшетов и больше*/
+    .service-col {
+        max-width: calc(100% / 3); /*т.е. колонка будет занимать одну треть ряда - получится 3 колонки*/
+        width: 100%;
+        margin-bottom: 0;
+    }
+}
+
+/*Split section*/
+.split-section {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.split-section__image {
+    order: -1;
+    margin-bottom: 40px;
+}
+
+.split-section__image,
+.split-section__text {
+    max-width: 100%;
+    width: 100%;
+}
+
+.split-section h2,
+.split-section p {
+    margin-bottom: 30px;
+}
+
+@media (min-width: 768px) { /*Напишем стили от планшетов и выше*/
+    .split-section {
+        margin-left: -25px;
+        margin-right: -25px;
+    }
+    .split-section__image {
+        order: initial;
+        margin-bottom: 0;
+    }
+    .split-section__image,
+    .split-section__text {
+        max-width: 50%;
+        width: 100%;
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+}
+
+/*Contact Form Section*/
+
+.contact-form {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -25px;
+    margin-right: -25px;
+}
+
+.contact-form__info,
+.contact-form__form {
+    padding-right: 25px;
+    padding-left: 25px;
+}
+
+.contact-form__info {
+    order: -1;
+    margin-bottom: 30px;
+}
+
+@media (min-width: 768px) {
+        .contact-form__info,
+        .contact-form__form {
+        max-width: 50%;
+        width: 100%;
+    }
+        .contact-form__info {
+        order: initial;
+        margin-bottom: 0;
+    }
+}
+
+/*Form*/
+
+.form-control {
+    width: 100%;
+    font-size: 16px;
+    background-color: #fcfcfc;
+    padding: 5px 15px;
+    border-radius: 6px;
+    border: 1px solid #ececec;
+    -webkit-appearance: none; /*это нужно для того, чтобы наш input не наследовал дефолтные стили на webkit браузерах типо Сафари и др.*/
+}
+
+.form-control:not(textarea) {
+    height: 44px;
+}
+
+textarea.form-control {
+    padding-top: 10px;
+}
+
+.form-layout {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+[class*='form-col'] { /*с помощью данной записи мы выбираем все классы, у которых form-col имеется в названии класса*/
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 15px;
+}
+
+@media (min-width: 768px) {
+    .form-col-50 {
+        max-width: 50%;
+        width: 100%;
+    }
+}
+
+/*Footer*/
+
+.footer-row {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.footer-copyright {
+    opacity: .6;
+}
+
+.footer-social {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.footer-social li {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.footer-social a {
+    opacity: .6;
+}
+
+.footer-social a:hover {
+    opacity: 1;
+}
+
+.footer-social img { /*установим значение ширины для иконок*/
+    max-width: 18px;
+}
